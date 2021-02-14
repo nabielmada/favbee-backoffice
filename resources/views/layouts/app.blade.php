@@ -20,6 +20,9 @@
         <link rel="stylesheet" href="{{ asset('/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendors/bootstrap-icons/bootstrap-icons.css') }}">
 
+        <!-- Include Choices CSS -->
+        <link rel="stylesheet" href="{{ asset('/vendors/choices.js/choices.min.css') }}" />
+
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/bootstrap.css') }}">
@@ -55,10 +58,65 @@
         <script src="{{ asset('/vendors/apexcharts/apexcharts.js') }}"></script>
         <script src="{{ asset('/js/pages/dashboard.js') }}"></script>    
         <script src="{{ asset('/vendors/simple-datatables/simple-datatables.js') }}"></script>
+        <script src="{{ asset('/vendors/choices.js/choices.min.js') }}"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <script>
             // Simple Datatable
             let table = document.querySelector('#table');
             let dataTable = new simpleDatatables.DataTable(table);
+        </script>
+        <script>
+            function readFile(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+        
+            reader.onload = function(e) {
+              var htmlPreview =
+                '<img width="200" src="' + e.target.result + '" />' +
+                '<p>' + input.files[0].name + '</p>';
+              var wrapperZone = $(input).parent();
+              var previewZone = $(input).parent().parent().find('.preview-zone');
+              var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+        
+              wrapperZone.removeClass('dragover');
+              previewZone.removeClass('hidden');
+              boxZone.empty();
+              boxZone.append(htmlPreview);
+            };
+        
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        
+        function reset(e) {
+          e.wrap('<form>').closest('form').get(0).reset();
+          e.unwrap();
+        }
+        
+        $(".dropzone").change(function() {
+          readFile(this);
+        });
+        
+        $('.dropzone-wrapper').on('dragover', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          $(this).addClass('dragover');
+        });
+        
+        $('.dropzone-wrapper').on('dragleave', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          $(this).removeClass('dragover');
+        });
+        
+        $('.remove-preview').on('click', function() {
+          var boxZone = $(this).parents('.preview-zone').find('.box-body');
+          var previewZone = $(this).parents('.preview-zone');
+          var dropzone = $(this).parents('.form-group').find('.dropzone');
+          boxZone.empty();
+          previewZone.addClass('hidden');
+          reset(dropzone);
+        });
         </script>
 
         @livewireScripts

@@ -39,3 +39,7 @@ Route::resource('tag', TagController::class)->names([
 Route::resource('cs', CsController::class)->names([
     'index' => 'cs'
 ]);
+
+Route::get('/cs-add',function(){
+    return view('master.cs_add');
+});

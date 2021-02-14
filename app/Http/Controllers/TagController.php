@@ -71,7 +71,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('master.edit_tag')->with('tag', $tag);
+        return view('master.tag_edit')->with('tag', $tag);
     }
 
     /**

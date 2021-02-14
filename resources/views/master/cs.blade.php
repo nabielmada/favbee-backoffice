@@ -20,7 +20,7 @@
     <div class = "col-12">
         <div class="card">
             <div class="card-header">
-            <a href = "{{ route('cs.store') }}" 
+            <a href = "/cs-add" 
                 class = "btn btn-md btn-primary">
                 <i class = "bi bi-plus"></i> Tambah 
             </a>
@@ -44,13 +44,29 @@
                         @foreach($cs as $c )
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $c->nama }}</td>
-                            <td>{{ $c->alamat }}</td>
-                            <td>{{ $c->nowa }}</td>
-                            <td>{{ $c->cs_penjualan }}</td>
-                            <td>{{ $c->status }}</td>
                             <td>
-                                <a href="{{ route('cs.edit', $c) }}" class="btn btn-sm btn-info"><i class = "bi bi-pencil"></i></a>
+                                <div class="avatar avatar-lg me-3">
+                                    <img src="images/cs/{{ $c->avatar }}" alt="" srcset="">
+                                </div>
+                                
+                                {{ $c->nama }}
+                            </td>
+                            <td>{{ $c->alamat }}</td>
+                            <td>{{ $c->nohp }}</td>
+                            <td>{{ $c->cs_penjualan }}</td>
+                            <td>
+
+                                @if ($c->status == 'Y')
+                                    <span class="badge bg-light-success">Online</span>
+                                @elseif($c->status == 'N')
+                                    <span class="badge bg-light-danger">Offline</span>
+                                @else
+                                    <span class="badge bg-light-warning">Belum aktif</span>
+                                @endif
+                                
+                            </td>
+                            <td>
+                                {{-- <a href="{{ route('cs.edit', $c) }}" class="btn btn-sm btn-info"><i class = "bi bi-pencil"></i></a> --}}
                                 <form method = "post" action="{{ route('cs.destroy', $c ) }}" class = "d-inline">
                                     @csrf
                                     @method('delete')

@@ -71,7 +71,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        return view('master.edit_kategori')->with('kategori', $kategori);
+        return view('master.kategori_edit')->with('kategori', $kategori);
     }
 
     /**

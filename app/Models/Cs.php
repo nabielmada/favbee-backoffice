@@ -10,5 +10,5 @@ class Cs extends Model
     use HasFactory;
 
     protected $table = "ms_cs";
-    
+    protected $fillable = ['nama','alamat','kota','nohp','avatar','userid'];
 }

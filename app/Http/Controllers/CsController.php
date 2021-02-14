@@ -37,7 +37,28 @@ class CsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama'   => 'required',
+            'alamat' => 'required',
+            'nohp'   => 'required',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+    
+        $imageName = $request->file('avatar')->getClientOriginalName();
+        $imagePath = $request->avatar->move(public_path('images/cs'), $imageName);
+
+        $cs = New Cs;
+
+        $cs->nama   = $request->nama;
+        $cs->alamat = $request->alamat;
+        $cs->kota   = $request->kota;
+        $cs->nohp   = $request->nohp;
+        $cs->userid = $request->userid;
+        $cs->avatar = $imageName;
+
+        $cs->save();
+        
+        return redirect()->route('cs');
     }
 
     /**
@@ -82,6 +103,8 @@ class CsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cs = Cs::find($id);
+        $cs->delete();
+        return redirect()->route('cs');
     }
 }
