@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kategori;
+use App\Models\Tag;
 
-class KategoriController extends Controller
+
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-
-        $kategori = Kategori::all();
-        return view('master.kategori')->with('kategori', $kategori);
-
+        $tag = Tag::all();
+        return view('master.tag')->with('tag', $tag);
     }
 
     /**
@@ -27,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -39,17 +38,18 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'kategori' => 'required'
-    	]);
- 
-        $kategori = new Kategori;
+            'tag' => 'required'
+        ]);
 
-        $kategori->kategori = $request->kategori;
-        $kategori->userid   = $request->userid;
+        $tag = new Tag;
 
-        $kategori->save();
- 
-    	return redirect()->route('kategori');
+        $tag->tag      = $request->tag;
+        $tag->userid   = $request->userid;
+
+        $tag->save();
+
+        return redirect()->route('tag');
+
     }
 
     /**
@@ -69,9 +69,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategori)
+    public function edit(Tag $tag)
     {
-        return view('master.edit_kategori')->with('kategori', $kategori);
+        return view('master.edit_tag')->with('tag', $tag);
     }
 
     /**
@@ -81,17 +81,17 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, Tag $tag)
     {
         $this->validate($request,[
-    		'kategori' => 'required'
+            'tag' => 'required'
         ]);
-        
-        $kategori->kategori = $request->kategori;
 
-        $kategori->save();
+        $tag->tag = $request->tag;
 
-        return redirect()->route('kategori');
+        $tag->save();
+
+        return redirect()->route('tag');
     }
 
     /**
@@ -100,9 +100,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy(Tag $tag)
     {
-        $kategori->delete();
-        return redirect()->route('kategori');
+        $tag->delete();
+        return redirect()->route('tag');
     }
 }

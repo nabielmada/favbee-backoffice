@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +24,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
 // Master Kategori
-Route::get(
-    '/kategori',
-     [KategoriController::class, 'index']
-     )->name('kategori');
+Route::resource('kategori', KategoriController::class)->names([
+    'index'   => 'kategori'
+]);
 
-Route::post(
-    '/kategori/store',
-     [KategoriController::class, 'store']
-     )->name('store_kategori');
+// Master Tags
+Route::resource('tag', TagController::class)->names([
+    'index' => 'tag'
+]);
 
-Route::get(
-    '/kategori/edit/{id}',
-     [KategoriController::class, 'edit']
-     )->name('edit_kategori');
-
-Route::get(
-    '/kategori/destroy/{id}',
-     [KategoriController::class, 'destroy']
-     )->name('destroy_kategori');
+// Master Customer Services
+Route::resource('cs', CsController::class)->names([
+    'index' => 'cs'
+]);

@@ -57,8 +57,8 @@
         <script src="{{ asset('/vendors/simple-datatables/simple-datatables.js') }}"></script>
         <script>
             // Simple Datatable
-            let table_kategori = document.querySelector('#table_kategori');
-            let dataTable = new simpleDatatables.DataTable(table_kategori);
+            let table = document.querySelector('#table');
+            let dataTable = new simpleDatatables.DataTable(table);
         </script>
 
         @livewireScripts

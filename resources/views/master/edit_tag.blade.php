@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Kategori</h3>
-                <p class="text-subtitle text-muted">Edit master kategori untuk product</p>
+                <h3>Tag</h3>
+                <p class="text-subtitle text-muted">Edit master tag untuk product</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href = "/kategori">Kategori </a> / Edit
+                            <a href = "/tag">Tag </a> / Edit
                         </li>
                     </ol>
                 </nav>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" method="POST" action="{{ route('kategori.update', $kategori) }}">
+                            <form class="form form-vertical" method="POST" action="{{ route('tag.update', $tag) }}">
 
                                 @csrf
                                 @method('put')
@@ -34,13 +34,13 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12 form-group">
-                                            <label class = "mb-2">Kategori</label>
-                                            <input type="text" id="kategori" class="form-control" autofocus
-                                            name="kategori" value = "{{ $kategori->kategori }}">
+                                            <label class = "mb-2">Tag</label>
+                                            <input type="text" id="tag" class="form-control" autofocus
+                                            name="tag" value = "{{ $tag->tag }}">
 
-                                    @if($errors->has('kategori'))
+                                    @if($errors->has('tag'))
                                 <div class="text-danger mt-2">
-                                    {{ $errors->first('kategori')}}
+                                    {{ $errors->first('tag')}}
                                 </div>
                                     @endif
 

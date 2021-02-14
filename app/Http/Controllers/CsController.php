@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kategori;
+use App\Models\Cs;
 
-class KategoriController extends Controller
+class CsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
-
-        $kategori = Kategori::all();
-        return view('master.kategori')->with('kategori', $kategori);
-
+        
+        $cs = Cs::all();
+        return view('master.cs')->with('cs', $cs);
     }
 
     /**
@@ -27,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -38,18 +37,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-    		'kategori' => 'required'
-    	]);
- 
-        $kategori = new Kategori;
-
-        $kategori->kategori = $request->kategori;
-        $kategori->userid   = $request->userid;
-
-        $kategori->save();
- 
-    	return redirect()->route('kategori');
+        //
     }
 
     /**
@@ -69,9 +57,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategori)
+    public function edit($id)
     {
-        return view('master.edit_kategori')->with('kategori', $kategori);
+        //
     }
 
     /**
@@ -81,17 +69,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        $this->validate($request,[
-    		'kategori' => 'required'
-        ]);
-        
-        $kategori->kategori = $request->kategori;
-
-        $kategori->save();
-
-        return redirect()->route('kategori');
+        //
     }
 
     /**
@@ -100,9 +80,8 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        $kategori->delete();
-        return redirect()->route('kategori');
+        //
     }
 }

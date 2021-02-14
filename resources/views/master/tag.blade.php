@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Kategori</h3>
-                <p class="text-subtitle text-muted">Master kategori untuk product</p>
+                <h3>Tag</h3>
+                <p class="text-subtitle text-muted">Master tag untuk product</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Kategori</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tag</li>
                     </ol>
                 </nav>
             </div>
@@ -24,20 +24,20 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical" method="POST" action="{{ route('kategori.store') }}">
+                            <form class="form form-vertical" method="POST" action="{{ route('tag.store') }}">
 
                                 @csrf
 
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12 form-group">
-                                            <label class = "mb-2">Kategori</label>
-                                            <input type="text" id="kategori" class="form-control" autofocus
-                                                name="kategori" placeholder="Kategori...">
+                                            <label class = "mb-2">Tag</label>
+                                            <input type="text" id="tag" class="form-control" autofocus
+                                                name="tag" placeholder="Tag...">
 
-                                    @if($errors->has('kategori'))
+                                    @if($errors->has('tag'))
                                 <div class="text-danger mt-2">
-                                    {{ $errors->first('kategori')}}
+                                    {{ $errors->first('tag')}}
                                 </div>
                                     @endif
 
@@ -64,7 +64,7 @@
     <div class = "col-6">
         <div class="card">
             <div class="card-header">
-            {{-- <a href = "{{ route('add_kategori') }}" 
+            {{-- <a href = "{{ route('add_tag') }}" 
                 class = "btn btn-md btn-primary">
                 <i class = "bi bi-plus"></i> Tambah 
             </a> --}}
@@ -74,20 +74,20 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kategori</th>
+                            <th>Tag</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                         <?php $no = 1; ?>
-                        @foreach($kategori as $k )
+                        @foreach($tag as $t )
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $k->kategori }}</td>
+                            <td>{{ $t->tag }}</td>
                             <td>
-                                <a href="{{ route('kategori.edit', $k) }}" class="btn btn-sm btn-info"><i class = "bi bi-pencil"></i></a>
-                                <form method = "post" action="{{ route('kategori.destroy', $k ) }}" class = "d-inline">
+                                <a href="{{ route('tag.edit', $t) }}" class="btn btn-sm btn-info"><i class = "bi bi-pencil"></i></a>
+                                <form method = "post" action="{{ route('tag.destroy', $t ) }}" class = "d-inline">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin untuk menghapus ?')" ><i class = "bi bi-trash"></i></button>

@@ -12,11 +12,12 @@
                 </div>
             </div>
         </div>
+
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
+                <li class="sidebar-title ">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -26,16 +27,16 @@
                 <li class="sidebar-title">Master</li>
 
                 <li class="sidebar-item has-sub">
-                    <a href="" class='sidebar-link'>
+                    <a href="" class='sidebar-link '>
                         <i class="bi bi-box"></i>
                         <span>Products</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="{{ route('kategori') }}">Category</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Tags</a>
+                            <a href="{{ route('tag') }}">Tags</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-breadcrumb.html">Promo Diskon</a>
@@ -50,7 +51,7 @@
                 </li>
 
                 <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('cs') }}" class='sidebar-link'>
                         <i class="bi bi-emoji-smile"></i>
                         <span>Customer Service</span>
                     </a>
