@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CsController;
+use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,18 @@ Route::resource('kategori', KategoriController::class)->names([
 Route::resource('tag', TagController::class)->names([
     'index' => 'tag'
 ]);
+
+// Master Diskon
+Route::resource('diskon', DiskonController::class)->names([
+    'index' => 'diskon'
+]);
+
+// Master Product
+Route::resource('product', ProductController::class)->names([
+    'index' => 'product'
+]);
+
+Route::get('/product-add', [ProductController::class,'getDb']);
 
 // Master Customer Services
 Route::resource('cs', CsController::class)->names([

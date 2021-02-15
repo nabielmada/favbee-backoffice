@@ -133,13 +133,12 @@
                               </div>
                             </div>
                       
-                            <div class="row">
+                            {{-- <div class="row">
                               <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary btn-block pull-right">Upload Gambar</button>
                               </div>
-                            </div>
+                            </div> --}}
                           </div>
-                        </form>
                       </section>
                 </div>
             </div>

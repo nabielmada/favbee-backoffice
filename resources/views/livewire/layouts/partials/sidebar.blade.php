@@ -39,13 +39,13 @@
                             <a href="{{ route('tag') }}">Tags</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-breadcrumb.html">Promo Diskon</a>
+                            <a href="{{ route('diskon')}}">Promo Diskon</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-breadcrumb.html">Promo Paket</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-button.html">Products</a>
+                            <a href="{{ route('product') }}">Products</a>
                         </li>
                     </ul>
                 </li>

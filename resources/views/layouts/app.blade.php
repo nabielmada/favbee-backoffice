@@ -23,7 +23,6 @@
         <!-- Include Choices CSS -->
         <link rel="stylesheet" href="{{ asset('/vendors/choices.js/choices.min.css') }}" />
 
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -59,6 +58,9 @@
         <script src="{{ asset('/js/pages/dashboard.js') }}"></script>    
         <script src="{{ asset('/vendors/simple-datatables/simple-datatables.js') }}"></script>
         <script src="{{ asset('/vendors/choices.js/choices.min.js') }}"></script>
+        <script src="{{ asset('/js/dropzone.js') }}"></script>
+        <script src="{{ asset('/vendors/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset('/vendors/tinymce/plugins/code/plugin.min.js') }}"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <script>
             // Simple Datatable
@@ -117,6 +119,10 @@
           previewZone.addClass('hidden');
           reset(dropzone);
         });
+        </script>
+        <script>
+              tinymce.init({ selector: '#default' });
+              tinymce.init({ selector: '#dark', toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code', plugins: 'code' });
         </script>
 
         @livewireScripts
