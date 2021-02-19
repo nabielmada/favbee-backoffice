@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-8">
                             <h6 class="text-muted font-semibold">Total Product</h6>
-                            <h6 class="font-extrabold mb-0">112.000</h6>
+                            <h6 class="font-extrabold mb-0">{{ $product_count }}</h6>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,8 @@
                                 
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-info"><i class = "bi bi-search"></i></a> 
+                                <a href="#" value="{{ route('product.show', $p ) }}" class="btn btn-sm btn-info modalMd" title="Show Data" data-toggle="modal" data-target="#modalMd"><span class="bi bi-search"></span></a>
+                                
                                 <form method = "post" action="{{ route('product.destroy', $p ) }}" class = "d-inline">
                                     @csrf
                                     @method('delete')
@@ -138,6 +139,5 @@
     </div>
 </div>
 
-    
-    
+
 </x-app-layout>

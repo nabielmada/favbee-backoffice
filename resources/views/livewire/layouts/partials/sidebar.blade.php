@@ -27,7 +27,7 @@
                 <li class="sidebar-title">Master</li>
 
                 <li class="sidebar-item has-sub">
-                    <a href="" class='sidebar-link '>
+                    <a href="" class='sidebar-link'>
                         <i class="bi bi-box"></i>
                         <span>Products</span>
                     </a>
@@ -35,16 +35,13 @@
                         <li class="submenu-item">
                             <a href="{{ route('kategori') }}">Category</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="{{ route('tag') }}">Tags</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="{{ route('diskon')}}">Promo Diskon</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="component-breadcrumb.html">Promo Paket</a>
-                        </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="{{ route('product') }}">Products</a>
                         </li>
                     </ul>
@@ -65,7 +62,7 @@
                 </li>
 
                 <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('konsumen')}}" class='sidebar-link'>
                         <i class="bi bi-people"></i>
                         <span>Konsumen</span>
                     </a>
@@ -90,6 +87,12 @@
 
                 <li class="sidebar-title">Settings</li>
 
+                <li class="sidebar-item ">
+                    <a href="{{ route('webmenu') }}" class='sidebar-link'>
+                        <i class="bi bi-globe"></i>
+                        <span>Web Menu</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>

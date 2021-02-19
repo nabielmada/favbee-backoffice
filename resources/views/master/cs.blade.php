@@ -33,7 +33,7 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Wa</th>
-                            <th>Penjualan</th>
+                            <th>Retrive</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>

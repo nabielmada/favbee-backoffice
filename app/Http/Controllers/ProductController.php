@@ -19,7 +19,9 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('master.product')->with('product', $product);
+        $product_count = Product::count();
+        return view('master.product',compact('product',
+                                             'product_count'));
     }
 
     public function getDb(Request $request)
@@ -103,7 +105,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product_detail = Product::find($id);
+        return view('master.product',compact('product_detail'))->renderSections()['content'];
     }
 
     /**

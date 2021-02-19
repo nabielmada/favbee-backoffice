@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CsController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\KonsumenController;
+use App\Http\Controllers\WebmenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,43 +20,53 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    // Master Kategori
+    Route::resource('kategori', KategoriController::class)->names([
+        'index'   => 'kategori'
+    ]);
 
+    // Master Tags
+    Route::resource('tag', TagController::class)->names([
+        'index' => 'tag'
+    ]);
 
-// Master Kategori
-Route::resource('kategori', KategoriController::class)->names([
-    'index'   => 'kategori'
-]);
+    // Master Diskon
+    Route::resource('diskon', DiskonController::class)->names([
+        'index' => 'diskon'
+    ]);
 
-// Master Tags
-Route::resource('tag', TagController::class)->names([
-    'index' => 'tag'
-]);
+    // Master Product
+    Route::resource('product', ProductController::class)->names([
+        'index' => 'product'
+    ]);
 
-// Master Diskon
-Route::resource('diskon', DiskonController::class)->names([
-    'index' => 'diskon'
-]);
+    Route::get('/product-add', [ProductController::class,'getDb']);
 
-// Master Product
-Route::resource('product', ProductController::class)->names([
-    'index' => 'product'
-]);
+    // Master Customer Services
+    Route::resource('cs', CsController::class)->names([
+        'index' => 'cs'
+    ]);
 
-Route::get('/product-add', [ProductController::class,'getDb']);
+    Route::get('/cs-add',function(){
+        return view('master.cs_add');
+    });
 
-// Master Customer Services
-Route::resource('cs', CsController::class)->names([
-    'index' => 'cs'
-]);
+    // Master Konsumen
+    Route::resource('/konsumen', KonsumenController::class)->names([
+        'index' => 'konsumen'
+    ]);
 
-Route::get('/cs-add',function(){
-    return view('master.cs_add');
+    // Master Settings Web Menu
+    Route::resource('/webmenu', WebmenuController::class)->names([
+        'index' => 'webmenu'
+    ]);
+
 });

@@ -124,6 +124,16 @@
               tinymce.init({ selector: '#default' });
               tinymce.init({ selector: '#dark', toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code', plugins: 'code' });
         </script>
+        <script>
+            $(document).on('ajaxComplete ready', function () {
+              $('.modalMd')
+                  .off('click')
+                  .on('click', function () {
+                      $('#modalMdContent').load($(this).attr('value'));
+                      $('#modalMdTitle').html($(this).attr('title'));
+                  });
+          });
+        </script>
 
         @livewireScripts
         <script src="{{ asset('/js/main.js') }}"></script>
