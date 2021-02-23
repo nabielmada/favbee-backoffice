@@ -24,6 +24,15 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
+                            <div class="col-sm-12">
+
+                                @if(session()->get('success'))
+                                  <div class="alert alert-success">
+                                    {{ session()->get('success') }}  
+                                  </div>
+                                @endif
+                                
+                              </div>
                             <form class="form form-vertical" method="POST" action="{{ route('tag.store') }}">
 
                                 @csrf

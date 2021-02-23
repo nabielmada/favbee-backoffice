@@ -49,7 +49,7 @@ class KategoriController extends Controller
 
         $kategori->save();
  
-    	return redirect()->route('kategori');
+    	return redirect()->route('kategori')->with('success', 'Data berhasil di tambahkan !');
     }
 
     /**
@@ -91,7 +91,7 @@ class KategoriController extends Controller
 
         $kategori->save();
 
-        return redirect()->route('kategori');
+        return redirect()->route('kategori')->with('success', 'Data berhasil di edit !');
     }
 
     /**
@@ -103,6 +103,6 @@ class KategoriController extends Controller
     public function destroy(Kategori $kategori)
     {
         $kategori->delete();
-        return redirect()->route('kategori');
+        return redirect()->route('kategori')->with('success', 'Data berhasil di delete !');
     }
 }

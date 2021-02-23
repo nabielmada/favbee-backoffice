@@ -60,13 +60,12 @@ class ProductController extends Controller
             'stock'    => 'required',
             'harga'    => 'required',
             'des'      => 'required',
-            'avatar'   => 'required',
-            'avatar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'avatar'   => 'required'
         ]);
 
         foreach($request->file('avatar') as $image)
             {
-                $name=$image->getClientOriginalName();
+                $name   = $image->getClientOriginalName();
                 $image->move(public_path().'/images/product', $name);  
                 $data[] = $name;  
             }
@@ -94,7 +93,7 @@ class ProductController extends Controller
         }
         
 
-        return redirect()->route('product');
+        return redirect()->route('product')->with('success', 'Data berhasil di tambahkan !');
     }
 
     /**
@@ -141,6 +140,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product');
+        return redirect()->route('product')->with('success', 'Data berhasil di delete !');
     }
 }

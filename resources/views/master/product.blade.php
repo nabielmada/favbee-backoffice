@@ -73,6 +73,16 @@
     <div class = "col-12">
         <div class="card">
             <div class="card-header">
+                <div class="col-sm-12">
+
+                    @if(session()->get('success'))
+                      <div class="alert alert-success">
+                        {{ session()->get('success') }}  
+                      </div>
+                    @endif
+                    
+                  </div>
+
             <a href = "/product-add" 
                 class = "btn btn-md btn-primary">
                 <i class = "bi bi-plus"></i> Tambah 

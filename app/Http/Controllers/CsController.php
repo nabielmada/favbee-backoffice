@@ -58,7 +58,7 @@ class CsController extends Controller
 
         $cs->save();
         
-        return redirect()->route('cs');
+        return redirect()->route('cs')->with('success', 'Data berhasil di tambahkan !');
     }
 
     /**
@@ -105,6 +105,6 @@ class CsController extends Controller
     {
         $cs = Cs::find($id);
         $cs->delete();
-        return redirect()->route('cs');
+        return redirect()->route('cs')->with('success', 'Data berhasil di delete !');
     }
 }

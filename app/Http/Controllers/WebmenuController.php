@@ -82,7 +82,7 @@ class WebmenuController extends Controller
 
         $webmenu->save();
 
-        return redirect('/webmenu')->with('success', 'Data berhasil di edit !');
+        return redirect()->route('webmenu')->with('success', 'Data berhasil di edit !');
     }
 
     /**

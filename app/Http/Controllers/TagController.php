@@ -48,7 +48,7 @@ class TagController extends Controller
 
         $tag->save();
 
-        return redirect()->route('tag');
+        return redirect()->route('tag')->with('success', 'Data berhasil di tambahkan !');
 
     }
 
@@ -91,7 +91,7 @@ class TagController extends Controller
 
         $tag->save();
 
-        return redirect()->route('tag');
+        return redirect()->route('tag')->with('success', 'Data berhasil di edit !');
     }
 
     /**
@@ -103,6 +103,6 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        return redirect()->route('tag');
+        return redirect()->route('tag')->with('success', 'Data berhasil di delete !');
     }
 }

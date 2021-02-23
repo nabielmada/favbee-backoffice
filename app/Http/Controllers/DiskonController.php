@@ -48,7 +48,7 @@ class DiskonController extends Controller
 
         $diskon->save();
 
-        return redirect()->route('diskon');
+        return redirect()->route('diskon')->with('success', 'Data berhasil di tambahkan !');
     }
 
     /**
@@ -91,7 +91,7 @@ class DiskonController extends Controller
 
         $diskon->save();
 
-        return redirect()->route('diskon');
+        return redirect()->route('diskon')->with('success', 'Data berhasil di edit !');
     }
 
     /**
@@ -103,6 +103,6 @@ class DiskonController extends Controller
     public function destroy(Diskon $diskon)
     {
         $diskon->delete();
-        return redirect()->route('diskon');
+        return redirect()->route('diskon')->with('success', 'Data berhasil di delete !');
     }
 }
