@@ -9,6 +9,7 @@ use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\WebmenuController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,13 @@ use App\Http\Controllers\WebmenuController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-    
+    Route::redirect('/', '/login');
+
+    // Master Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Master Kategori
@@ -60,12 +62,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     });
 
     // Master Konsumen
-    Route::resource('/konsumen', KonsumenController::class)->names([
+    Route::resource('konsumen', KonsumenController::class)->names([
         'index' => 'konsumen'
     ]);
 
     // Master Settings Web Menu
-    Route::resource('/webmenu', WebmenuController::class)->names([
+    Route::resource('webmenu', WebmenuController::class)->names([
         'index' => 'webmenu'
     ]);
 

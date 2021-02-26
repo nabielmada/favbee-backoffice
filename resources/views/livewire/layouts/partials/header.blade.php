@@ -59,11 +59,12 @@
                                 Profile</a></li>
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <li>
-                            <a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
+                            <a class="dropdown-item" href="/user/api-tokens"><i class="icon-mid bi bi-gear me-2"></i>
                             {{ __('API Tokens') }}
                             </a>
                         </li>
                         @endif
+                        
                         <li>
                             <hr class="dropdown-divider">
                         </li>

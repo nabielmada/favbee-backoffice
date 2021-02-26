@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('auth:sanctum')->group(function(){
 });
-     
-    Route::get('/webmenu', [ApiController::class, 'webmenu']);
-    Route::get('/product', [ApiController::class, 'product']);
+
+Route::get('/webmenu', [ApiController::class, 'webmenu']);
+Route::put('/webmenu', [ApiController::class, 'webmenu_edit']);
+
+Route::get('/product', [ApiController::class, 'product']);
+Route::get('/product/{id}', [ApiController::class, 'product_detail']);

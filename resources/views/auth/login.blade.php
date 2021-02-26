@@ -1,8 +1,8 @@
 <x-guest-layout>
 
     <div id="auth-left">
-        <h1 class="auth-title display-1 text-center">Log in.</h1>
-         <p class="fs-5 text-muted mb-5 text-center"> with your data entered before</p> 
+        <h1 class="auth-title display-1 fs-1 text-center">Favbee Admin </h1>
+         <p class="fs-5 text-muted mb-5 text-center"> Masukkan akun anda sebelum memulai program. </p> 
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">

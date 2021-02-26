@@ -59,6 +59,8 @@ class ProductController extends Controller
             'kategori' => 'required',
             'stock'    => 'required',
             'harga'    => 'required',
+            'kota'     => 'required',
+            'rating'   => 'required',
             'des'      => 'required',
             'avatar'   => 'required'
         ]);
@@ -67,19 +69,29 @@ class ProductController extends Controller
             {
                 $name   = $image->getClientOriginalName();
                 $image->move(public_path().'/images/product', $name);  
+
+                $copy = '../../favbee/public/product/';
+                \File::copy(public_path().'/images/product/'.$name, $copy.$name);
+                
                 $data[] = $name;  
             }
 
         $product    = new Product;
         
-        $product->nama      = $request->nama;
-        $product->kategori  = $request->kategori;
-        $product->stock     = $request->stock;
-        $product->disc      = $request->disc;
-        $product->harga     = $request->harga;
-        $product->des       = $request->des;
-        $product->avatar    = json_encode($data);
-        $product->userid    = $request->userid;
+        $product->nama            = $request->nama;
+        $product->kategori        = $request->kategori;
+        $product->stock           = $request->stock;
+        $product->disc            = $request->disc;
+        $product->harga           = $request->harga;
+
+        $hargatotal = ($request->harga - ($request->disc * $request->harga) / 100);
+
+        $product->harga_total     = $hargatotal;
+        $product->kota            = $request->kota;
+        $product->rating          = $request->rating;
+        $product->des             = $request->des;
+        $product->avatar          = json_encode($data);
+        $product->userid          = $request->userid;
 
         $product->save();
 

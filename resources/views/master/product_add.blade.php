@@ -106,7 +106,7 @@
           <br/>
           @foreach ($diskon as $d)
           <div class="form-check d-inline-block" data-bs-toggle="tooltip" title="{{ $d->ket }}">
-              <input class="form-check-input" type="radio" name="diskon" id="diskon">
+              <input class="form-check-input" type="radio" name="disc" id="disc" value = "{{ $d->diskon }}">
             <label class="form-check-label">
                   {{ $d->diskon }} %
               </label>  
@@ -171,6 +171,82 @@
                     </section>
               </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" data-bs-toggle="tooltip" title="Required!" >
+                       Kota & Rating Reviews <code> * </code>
+                    </h4>
+                </div>
+                <div class="card-body">
+    <div class = "row">
+
+                        <div class="col-6 form-group">
+                            <label class = "mb-2">Kota Toko</label>
+            @php
+        
+            $curl = curl_init();
+        
+            // API Key RajaOngkir user:Nabielmada
+        
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "http://api.rajaongkir.com/starter/city",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_HTTPHEADER => array(
+                "key: 9984da530e9c4909b88fb6d55833b230"
+              ),
+            ));
+        
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+        
+            curl_close($curl);
+        
+            // Convert JSON to Array untuk pemanggilan di foreach
+            $arrayResponse = json_decode($response, true); 
+            $tempListKota = $arrayResponse['rajaongkir']['results'];
+        
+            @endphp
+                            <select name="kota" id="kota" class = "form-select choices">
+                                <option value = "" selected> Pilih kota </option>
+                                @foreach ($tempListKota as $item )
+                                    <option value="{{$item['city_name']}}">{{$item['city_name']}}</option>
+                                @endforeach
+                                
+                            </select>
+        
+                                @if($errors->has('kota'))
+                            <div class="text-danger mt-2">
+                                {{ $errors->first('kota')}}
+                            </div>
+                                @endif
+        
+                        </div>
+
+                        <div class="col-6 form-group">
+                            <label class = "mb-2">Rating</label>
+                            <input type="number" id="rating" class="form-control"
+                                name="rating" placeholder="Rating..."
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type = "number"
+                                maxlength = "1">
+        
+                                @if($errors->has('rating'))
+                            <div class="text-danger mt-2">
+                                {{ $errors->first('rating')}}
+                            </div>
+                                @endif
+        
+                        </div>
+  
+                  </div>
+                </div>
+              </div>
 
             <div class="card">
               <div class="card-header">
