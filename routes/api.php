@@ -24,3 +24,8 @@ Route::put('/webmenu', [ApiController::class, 'webmenu_edit']);
 
 Route::get('/product', [ApiController::class, 'product']);
 Route::get('/product/{id}', [ApiController::class, 'product_detail']);
+
+// RajaOngkir
+Route::get('/provinces', [ApiController::class, 'getProvinces']);
+Route::get('/cities/{id}', [ApiController::class, 'getCities']);
+Route::post('/checkOngkir', [ApiController::class, 'checkOngkir']);
